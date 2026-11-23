@@ -11,7 +11,7 @@ int main_menu() {
     //Engine loop
     while (true) {
         cout << "*** Binary Tree Manager ***" << endl;
-        cout << "[1] Add a node" << endl << "[2] Delete a node" << endl << "[3] Search for a node" << endl << "[4] Modify nodes" << "[5] Exit" << endl;
+        cout << "[1] Add a node" << endl << "[2] Delete a node" << endl << "[3] Search for a node" << endl << "[4] Modify nodes" << endl << "[5] Exit" << endl;
         cout << "Choice --> ";
         cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5) {
@@ -39,7 +39,38 @@ int main() {
         tree.insertNode(line);
     }
 
-    int choice  
+    int choice = 0;
+    while (choice != 5) {
+        choice = main_menu();
+        if (choice == 1) {
+            cout << "Enter the node you'd like to insert: ";
+            string n;
+            cin >> n;
+            tree.insertNode(n);
+            cout << n << " added." << endl; 
+        }
+        if (choice == 2) {
+            cout << "Enter the node you'd like to remove ";
+            string n;
+            cin >> n;
+            tree.remove(n);
+            cout << n << " removed." << endl; 
+        }
+        if (choice == 3) {
+            cout << "Enter the node you'd like to search for: ";
+            string n;
+            cin >> n;
+            if (tree.searchNode(n) == 1) {
+                cout << "Node " << n << " found!" << endl;
+            }
+            else {
+                cout << "Node " << n << " not found!" << endl;
+            }
+        }
+        if (choice == 4) {
+            //modify node
+        }
+    } 
 
     return 0;
 }
