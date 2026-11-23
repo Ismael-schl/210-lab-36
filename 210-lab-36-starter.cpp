@@ -1,20 +1,25 @@
 //Lab 36 | COMSC 210 | Ismael Hadi
 #include <iostream>
+#include <fstream>
+#include <string>
 #include "IntBinaryTree.h"
 using namespace std;
 
 int main() {
-    //code for testing string conversion
-    IntBinaryTree testree;
-    testree.insertNode("AAAA");
-    testree.insertNode("BBBB");
-    testree.insertNode("CCCC");
-    testree.displayInOrder();
-    cout << "Expected output is 1. Real output: " << testree.searchNode("AAAA") << endl;
-    cout << "Expected output is 0. Real output: "  << testree.searchNode("NOTHERE") << endl;
-    cout << "Now removing first node... New tree: " << endl;
-    testree.remove("AAAA");
-    testree.displayInOrder();
+    IntBinaryTree tree;
+    //File input setup
+    ifstream fin("codes.txt");
+    if (!fin.is_open()) {
+        cerr << "Error: Could not open file." << endl;
+        return 1;
+    }
+    
+    string line;
+    while (getline(fin, line)) {
+        tree.insertNode(line);
+    }
+
+    tree.displayInOrder();    
 
     return 0;
 }
